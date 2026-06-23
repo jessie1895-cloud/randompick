@@ -8,12 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans antialiased overflow-hidden">
     <div id="root"></div>
 
-    <script type="text/babel">
+    <script type="text/babel" data-type="module">
         const { useState, useEffect, useRef } = React;
 
         // 아이콘 SVG 컴포넌트
@@ -57,7 +57,6 @@
 
         function App() {
             const [students, setStudents] = useState(() => {
-                // 예외 처리 추가: 저장된 데이터가 손상되었을 경우 기본 명단으로 안전하게 복구
                 try {
                     const saved = localStorage.getItem('roulette_students');
                     return saved ? JSON.parse(saved) : DEFAULT_STUDENTS;
